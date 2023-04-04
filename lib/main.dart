@@ -2,25 +2,23 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:prmagito/theme/color.dart';
 import 'package:prmagito/pages//root_app.dart';
-void main() async{
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-   await  Firebase.initializeApp();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
-        return MaterialApp(
-
-                debugShowCheckedModeBanner: false,
-                theme: ThemeData(
-
-                  primaryColor: primary,
-                ),
-                title: 'Parmageto',
-          home: RootApp(),
-        );
-
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primaryColor: primary,
+      ),
+      title: 'Parmageto',
+      home: RootApp(),
+    );
   }
 }
