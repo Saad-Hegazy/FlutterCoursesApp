@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "597890828744",
+    "project_id": "prmagito-68c2c",
+    "storage_bucket": "prmagito-68c2c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:597890828744:android:e47f6c81bb80cfeccbd8fd",
+        "android_client_info": {
+          "package_name": "com.example.prmagito"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "597890828744-qlrl944hk85c34lagdk07osl9hvn91se.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.prmagito",
+            "certificate_hash": "b3f11ca66ad5df6b47de92fc75666306bff3dc51"
+          }
+        },
+        {
+          "client_id": "597890828744-1sssegtnpd4gnqvogmdkfp441e7gg62t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQg6quR-jh_B8Bgg6fCUHYm8D_-WlID9c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "597890828744-1sssegtnpd4gnqvogmdkfp441e7gg62t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

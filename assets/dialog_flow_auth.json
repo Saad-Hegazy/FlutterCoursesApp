@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "parmagito-whjo",
+  "private_key_id": "c394bb4e16540133c8f4530b26f3756d73352ca4",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDDNIwxxppkjv4L\nlGvxleN0drlEe44mQu2/Iz2Hb6JuNYDKa7pnjOMMrdGrn+Eb3jC0a2fZ3IPSfXZM\nj4cRfuWCdTAc+JS1oPZm2a2euGrZsSfyWnmKEAtxlcxSaRHejIBd9ny3paOyilkp\nmluD0V801/3ADKXmZhbDfKCIQQ9NYLpZ8ONBLEx1X6XNCM8a2RSDinwBgxUFyBkQ\nw4sDwz7jMXC0W2b/jvRQlqBmLy+A3ls5MxomGABNOqHbj6fhrTanZIV17suIqLtP\nD6FcGvdjZpAod0ISVxMGBp2hHVtQIbDkDHhQVp5n6703RDCx8+9mp5OnLUO6KPzf\n1lqXCTMVAgMBAAECggEAEYaaP63RFs4vyOJefqYycbZnE9rz/ENuDQcg8xP2xWZQ\nVdwuNDXV/MFuXbZRA6uDO++Yt1qxCyjwghcwzUVTXc8frroyv8vf04QfrmxoS3s4\nVu4Ak4C1RlFoss10KUL8E3OZ5vMcK194ed+976vQnHH3+lIoYvMvgAWkdBdDRHMO\nlNmUVkkXLoJjCe8rYV4zJTWXd+ebnHLdRSBq2RsBxFMXXvLh4g5zaXttnR8g5bkZ\nZ0sZYlsI/DG6ZR4xm+OC5r13e8HmxI6tsSM2WLZiA1nM1ohB3k9J7lYugPt13mT5\nJ/FHp6nVpbKzG36FTRqiM4TTDm1u85FUxSJDie5xUQKBgQDsBaZC3sapPVG67yqq\nd+QdJCZc6Wbk9e+HJFRUGa5e5V9RSN4j44BSaNoaKv8d6cU3hJewCvd8qYoe8Lw1\nqrH/JSJPS9mPtyARY1H9u6Mx2uXNN0X7GOQ5LlxwIsSieGNJH8yeKyNMAlisgxMH\nVmmFyXBGcR389hc4IcDROsq1HwKBgQDTunDcmuUjf1bE6fQwGWdIUqeduU2iOVTt\nduPRCjJV1vl3kKJLbBjWHhWq7YmbYs1MwoH5926u1Suc5e1upL8N/c4JNgflvXUT\nCzN7FLBjIU+Any0VQ4kd0WUM/G8MTAwK99Sql/8OMmTpc4470jubSx2bYj4H5aUo\nh3r3sAp9SwKBgF4xhwAK/ofOVA7hokp0HJLQuYq9D3Zy/EwX4JvLv/5ZVigPh7AU\n/EJnXBuzaytZ/34/qXX1en3C/7+HXeWhIPZtsHqrD8G+WMr3s2Iq/19HOA0lcQVc\nEsELUpLiHU2l9CHb0gKRvr139kGq8e4su2JMWUWToV8yK2QYfGZEK2ALAoGAQuGc\nETOkuifZYu58Qk1kAMaLSBlm2p29pB1wLXJJIDB+MTSw754/4jMyqQHL/BejvmGa\n6Tkt73BLDI7dB5xm9aZ81RAKQposR028f16zsTyufnTJqvPgdljU0NtUwM+s5jIP\nLaxB11w34D6uaVsplQ6PVawc6CW0nC7fuyoSxi0CgYADRvzMahHmbj5JWAkBK2cX\no0jkHx6OTBAEKtqn7d9oUbU3w3xdtsP1crcL0n589GQ5JGBH0Ayk45JgxZpSXZZp\nmoZXEG9HQnR9XDxCrR+ZIdWTK7phIgolecjzgg+6pmguLw6w76bXhmiF2E7XFnVi\n3woCDhd8eU1k61KlAW95EA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "prmagitobot@parmagito-whjo.iam.gserviceaccount.com",
+  "client_id": "116758979712736174250",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/prmagitobot%40parmagito-whjo.iam.gserviceaccount.com"
+}
