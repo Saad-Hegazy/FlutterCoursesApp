@@ -1,7 +1,5 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-
 import 'package:prmagito/models/Api.dart';
 import 'package:prmagito/pages/pdf_viewer_page.dart';
 class BookItem extends StatelessWidget {

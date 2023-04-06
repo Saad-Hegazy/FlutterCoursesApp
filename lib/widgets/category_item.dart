@@ -11,6 +11,7 @@ class CategoryItem extends StatelessWidget {
 
     return InkWell(
       onTap:()=> Navigator.of(context).push(MaterialPageRoute(builder: (context)=>BooksFromCategoryPage(name))),
+
       splashColor: Theme.of(context).primaryColor,
       borderRadius:BorderRadius.circular(15),
       child: Stack(
@@ -40,7 +41,6 @@ class CategoryItem extends StatelessWidget {
 
         ],
       ),
-    )
-      ;
+    );
   }
 }

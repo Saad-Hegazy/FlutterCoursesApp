@@ -20,7 +20,26 @@ class _PDFViewerPageState extends State<PDFViewerPage> {
     final text = '${indexPage + 1} of $pages';
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text(name)),
+        title: Text(name),
+        actions: pages >= 2
+            ? [
+          Center(child: Text(text)),
+          IconButton(
+            icon: Icon(Icons.chevron_left, size: 32),
+            onPressed: () {
+              final page = indexPage == 0 ? pages : indexPage - 1;
+              controller.setPage(page);
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.chevron_right, size: 32),
+            onPressed: () {
+              final page = indexPage == pages - 1 ? 0 : indexPage + 1;
+              controller.setPage(page);
+            },
+          ),
+        ]
+            : null,
       ),
       body: PDFView(
         filePath: widget.file.path,
