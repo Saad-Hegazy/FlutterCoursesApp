@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prmagito/pages/CommunityPage.dart';
 import 'package:prmagito/widgets/bottombar_item.dart';
 import 'package:prmagito/theme/color.dart';
 import 'package:prmagito/utils/constant.dart';
@@ -18,7 +19,7 @@ class _RootAppState extends State<RootApp> with TickerProviderStateMixin {
     {
       "icon": "assets/icons/Community.svg",
       "active_icon": "assets/icons/Community.svg",
-      "page": MyHome(),
+      "page": CommunityPage(),
     },
     {
       "icon": "assets/icons/play.svg",

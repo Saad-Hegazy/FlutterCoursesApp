@@ -17,19 +17,19 @@ class _CategoriesPageState extends State<CategoriesPage> {
   CollectionReference category = FirebaseFirestore.instance.collection('category');
   getCategoryData()async{
     var responsbody = await category.get();
-        responsbody.docs.forEach((element) {
-        setState(() {
-          categories.add(element.data());
+    responsbody.docs.forEach((element) {
+      setState(() {
+        categories.add(element.data());
 
-        });
-       });
-      for(int i=0;i<categories.length;i++) {
-        Categories_data.insert(i,
-            Category(
-                name:categories[i]['name'],
-                imageUrl: categories[i]['image']
-            ));
-      }
+      });
+    });
+    for(int i=0;i<categories.length;i++) {
+      Categories_data.insert(i,
+          Category(
+              name:categories[i]['name'],
+              imageUrl: categories[i]['image']
+          ));
+    }
 
   }
   @override
@@ -40,28 +40,40 @@ class _CategoriesPageState extends State<CategoriesPage> {
   }
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: appBgColor,
       appBar: AppBar(
-        title: Center(child: Text('Categories')),
+        elevation: 0.5,
+        backgroundColor: appBgColor,
+          centerTitle: true,
+        title:
+            Text("Categories",
+          style: TextStyle(
+              fontSize: 28,
+              color: Colors.black87,
+              fontWeight: FontWeight.w600)
+          ,)
+
+
       ),
       body:
       GridView(
-        padding: const EdgeInsets.all(10),
-      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent:200,
-        childAspectRatio: 7/8,
-        mainAxisSpacing: 10,
-        crossAxisSpacing: 10,
+          padding: const EdgeInsets.all(10),
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent:200,
+            childAspectRatio: 7/8,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10,
 
-      ),
-      children:
-      Categories_data.map(
-          (categotyData)=>
-          CategoryItem(
-           imageUrl:categotyData.imageUrl , name: categotyData.name,
-          )
-      ).toList()
+          ),
+          children:
+          Categories_data.map(
+                  (categotyData)=>
+                  CategoryItem(
+                    imageUrl:categotyData.imageUrl , name: categotyData.name,
+                  )
+          ).toList()
 
 
       ),

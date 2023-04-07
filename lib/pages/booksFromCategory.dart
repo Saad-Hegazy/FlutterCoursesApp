@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:prmagito/theme/color.dart';
 import 'package:prmagito/widgets/BookCard.dart';
 class BooksFromCategoryPage extends StatefulWidget {
   late String name;
@@ -28,7 +29,23 @@ class _BooksFromCategoryPageState extends State<BooksFromCategoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Center(child: Text(this.widget.name)),),
+        appBar: AppBar(
+          leading: const BackButton(
+            color: Colors.black,
+          ),
+          centerTitle: true,
+          elevation: 0.5,
+          backgroundColor: appBgColor,
+          title:
+              Text(this.widget.name,
+                style: TextStyle(
+                    fontSize: 28,
+                    color: Colors.black87,
+                    fontWeight: FontWeight.w600)
+                ,)
+
+
+        ),
       body:  GridView.builder(
          padding: const EdgeInsets.all(10),
           gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(

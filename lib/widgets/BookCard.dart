@@ -1,10 +1,14 @@
 import 'dart:io';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:prmagito/models/Api.dart';
 import 'package:prmagito/pages/pdf_viewer_page.dart';
+import 'package:prmagito/theme/color.dart';
+
+import 'custom_image.dart';
 class BookCard extends StatefulWidget {
   final String imageURL;
   final String name;
@@ -17,14 +21,15 @@ class _BookCardState extends State<BookCard> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap:() {},
-
       borderRadius:BorderRadius.circular(15),
       child: Stack(
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(15),
-            child: Image.network(
-              this.widget.imageURL,
+            child:   CachedNetworkImage(
+              imageUrl:this.widget.imageURL,
+              placeholder: (context, url) => BlankImageWidget(),
+              errorWidget: (context, url, error) => BlankImageWidget(),
               height: 250,
               fit: BoxFit.cover,
             ),
@@ -33,45 +38,78 @@ class _BookCardState extends State<BookCard> {
               padding: EdgeInsets.all(5),
               alignment: Alignment.centerLeft,
               child: Text(
-                this.widget.name
-                ,
-                style: TextStyle(fontSize: 22,color: Colors.blue,),
+                this.widget.name,
+                style: TextStyle(fontSize: 22,
+                  color: Colors.white,
+                    fontWeight: FontWeight.w600
+                ),
               ),
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.1),
                 borderRadius: BorderRadius.circular(15),
+                color: Colors.black.withOpacity(0.1),
               )
 
           ),
 
             Container(
-              alignment: Alignment.bottomCenter,
-                          padding: EdgeInsets.all(5),
+              alignment: Alignment.bottomLeft,
+              padding: EdgeInsets.fromLTRB(1, 0, 1, 4),
               child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  IconButton(
-                    icon:Icon(Icons.menu_book_outlined),
-                    color: Colors.blue,
-                    onPressed:() async {
-                      final url = this.widget.name +'.pdf';
-                      final file = await PDFApi.loadFirebase(url);
-                      if (file == null) return;
-                      openPDF(context, file);
-                      },
-                     ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(1,0,1,1),
-                    child: IconButton(
-                      onPressed: () async{
+                  SizedBox(
+                    height: 30,
+                    width:68,
+                    child: ElevatedButton(
+                      onPressed:() async {
                         final url = this.widget.name +'.pdf';
-                        downloadFile(url);
-                        },
-                      icon:Icon(Icons.save_alt_outlined),
-                      color: Colors.blue,
+                        final file = await PDFApi.loadFirebase(url);
+                        if (file == null) return;
+                        openPDF(context, file);
+                      },
+                      child: Text("READ",
+                      ),
+                      style: ElevatedButton.styleFrom(
+
+                        backgroundColor: appBgColor,
+                        shadowColor:shadowColor,
+                        foregroundColor: Colors.black87,
+                        elevation: 2,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                      ),
+
                     ),
-                ),
-    ],
+
+                  ),
+                   SizedBox(
+                     height: 30,
+                     width:95,
+                     child: ElevatedButton(
+                       onPressed: () async{
+                         final url = this.widget.name +'.pdf';
+                         downloadFile(url);
+                       },
+
+                       child: Text("Download",
+
+                       ),
+                       style: ElevatedButton.styleFrom(
+                         backgroundColor: appBgColor,
+                         shadowColor:shadowColor,
+                         foregroundColor: Colors.black87,
+                         elevation: 3,
+                         shape: RoundedRectangleBorder(
+                           borderRadius: BorderRadius.circular(15),
+                         ),
+                       ),
+
+                     ),
+
+                   )
+
+
+                ],
   ),
 )
         ],
@@ -85,7 +123,7 @@ class _BookCardState extends State<BookCard> {
 
   Future downloadFile(String url) async {
 
-    final ref = FirebaseStorage.instance.ref().child(url);
+    final ref = FirebaseStorage.instance.ref('/books').child(url);
 
     Directory appDocDir = await getApplicationDocumentsDirectory();
 
@@ -97,16 +135,20 @@ class _BookCardState extends State<BookCard> {
       await OpenFile.open(tempFile.path);
     }on FirebaseException{
       ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error . file tidak biase diunduh ',
-            style: Theme.of(context).textTheme.bodyMedium,
+          SnackBar(content: Center(
+            child: Text('نأسف : حدث خطأما',
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
           )
           )
       );
     }
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text(
-        'File Berhasil diunduh',
-        style: Theme.of(context).textTheme.bodyMedium,
+      content: Center(
+        child: Text(
+          'يتم تحمبل الملف الأن',
+          style: Theme.of(context).textTheme.bodyMedium,
+        ),
       ),
       behavior: SnackBarBehavior.floating,
       backgroundColor: Theme.of(context).primaryColorLight,

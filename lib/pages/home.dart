@@ -1,6 +1,7 @@
 import 'package:dialog_flowtter/dialog_flowtter.dart';
 import'package:flutter/material.dart';
 import 'package:prmagito/pages/Messages.dart';
+import 'package:prmagito/theme/color.dart';
 
 class MyHome extends StatefulWidget {
   const MyHome({Key? key}) : super(key: key);
@@ -21,8 +22,19 @@ class _MyHomeState extends State<MyHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: appBgColor,
       appBar: AppBar(
-        title: Text('AMBot'),
+        elevation: 0.5,
+        backgroundColor: appBgColor,
+        title: Center(
+            child:  Text("CHAT BOT",
+              style: TextStyle(
+                  fontSize: 28,
+                  color: Colors.black87,
+                  fontWeight: FontWeight.w600)
+              ,)
+        ),
+
       ),
       body: Container(
         child: Column(
@@ -30,13 +42,13 @@ class _MyHomeState extends State<MyHome> {
             Expanded(child: MessagesScreen(messages: messages)),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-              color: Colors.deepPurple,
+              color: glassLabelColor,
               child: Row(
                 children: [
                   Expanded(
                       child: TextField(
                         controller: _controller,
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.black),
                       )),
                   IconButton(
                       onPressed: () {
