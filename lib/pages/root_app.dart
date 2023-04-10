@@ -1,9 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:prmagito/pages/CommunityPage.dart';
 import 'package:prmagito/widgets/bottombar_item.dart';
 import 'package:prmagito/theme/color.dart';
 import 'package:prmagito/utils/constant.dart';
-
+import 'package:flutter/services.dart';
 import 'categoryPage.dart';
 import 'home.dart';
 class RootApp extends StatefulWidget {
@@ -79,45 +81,58 @@ class _RootAppState extends State<RootApp> with TickerProviderStateMixin {
   }
 
   Widget getBarPage() {
+
     return IndexedStack(
         index: activeTab,
         children: List.generate(
-            barItems.length, (index) => animatedPage(barItems[index]["page"])));
+
+            barItems.length,
+
+                (index) => animatedPage(
+                    barItems[index]["page"]
+                )
+
+        )
+
+    );
   }
 
   Widget getBottomBar() {
     return Container(
-      height: 60,
-      width: double.infinity,
-      decoration: BoxDecoration(
-          color: bottomBarColor,
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(25), topRight: Radius.circular(25)),
-          boxShadow: [
-            BoxShadow(
-                color: shadowColor.withOpacity(0.1),
-                blurRadius: 1,
-                spreadRadius: 1,
-                offset: Offset(1, 1))
-          ]),
-      child: Padding(
-          padding: const EdgeInsets.only(
-            left: 25,
-            right: 25,
-            bottom: 15,
-          ),
-          child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: List.generate(
-                  barItems.length,
-                  (index) => BottomBarItem(
-                        barItems[index]["icon"],
-                        isActive: activeTab == index,
-                        activeColor: primary,
-                        onTap: () {
-                          onPageChanged(index);
-                        },
-                      )))),
-    );
+    height: 60,
+    width: double.infinity,
+    decoration: BoxDecoration(
+        color: bottomBarColor,
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(25), topRight: Radius.circular(25)),
+        boxShadow: [
+          BoxShadow(
+              color: shadowColor.withOpacity(0.1),
+              blurRadius: 1,
+              spreadRadius: 1,
+              offset: Offset(1, 1))
+        ]),
+    child: Padding(
+        padding: const EdgeInsets.only(
+          left: 25,
+          right: 25,
+          bottom: 15,
+        ),
+        child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: List.generate(
+                barItems.length,
+                    (index) => BottomBarItem(
+                  barItems[index]["icon"],
+                  isActive: activeTab == index,
+                  activeColor: primary,
+                  onTap: () {
+                    onPageChanged(index);
+                  },
+                )))),
+  );
+
+  
+  
   }
 }

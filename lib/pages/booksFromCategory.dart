@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:prmagito/models/Api.dart';
 import 'package:prmagito/theme/color.dart';
 import 'package:prmagito/widgets/BookCard.dart';
 class BooksFromCategoryPage extends StatefulWidget {
@@ -24,6 +25,8 @@ class _BooksFromCategoryPageState extends State<BooksFromCategoryPage> {
         void initState() {
           // TODO: implement initState
           super.initState();
+            PDFApi().CheckUserConnectionPage(context);
+
           getBookData();
         }
   @override

@@ -1,12 +1,28 @@
 
 import 'package:flutter/material.dart';
+import 'package:prmagito/models/Api.dart';
 import 'package:prmagito/widgets/custom_image.dart';
 import 'package:url_launcher/url_launcher.dart';
-class GroupItem extends StatelessWidget {
-  GroupItem({ required this.name, required this.CommunityUrl, required this.CommunityimageUrl});
+class GroupItem extends StatefulWidget {
+  GroupItem({ required this.name, required this.CommunityUrl, required this.CommunityimageUrl, required this.subtitel});
   final String name;
+  final String subtitel;
   final String CommunityUrl;
   final String  CommunityimageUrl;
+
+  @override
+  State<GroupItem> createState() => _GroupItemState();
+}
+
+class _GroupItemState extends State<GroupItem> {
+  bool  ActiveConnection=false;
+
+  @override
+  void initState() {
+    PDFApi().CheckUserConnectionPage(context);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context){
       return Container(
@@ -31,7 +47,7 @@ class GroupItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CustomImage(
-                  CommunityimageUrl,
+                  widget.CommunityimageUrl,
                   width: 80,
                   height: 80,
                 ),
@@ -49,14 +65,20 @@ class GroupItem extends StatelessWidget {
                                         children:[
                                           InkWell(
                                               child: Text(
-                                                    name,
+                                                    widget.name,
                                                     maxLines: 1,
                                                     overflow: TextOverflow.ellipsis,
                                                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)
                                                 ),
-                                                onTap: () => launchUrl(Uri.parse(CommunityUrl))
+                                                onTap: () async{
+                                                await PDFApi().CheckUserConnectionPage(context);
+                                                launchUrl(
+                                                    Uri.parse(widget.CommunityUrl)
+                                                );
+
+                                              }
                                             ),
-                                          Text('subtitel', maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(fontSize: 11, color: Colors.grey))
+                                          Text(widget.subtitel, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(fontSize: 11, color: Colors.grey))
                                         ]
 
                                     )

@@ -1,7 +1,9 @@
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:data_connection_checker_nulls/data_connection_checker_nulls.dart';
 class PDFApi {
   static Future<File?> loadFirebase(String url) async {
     try {
@@ -18,6 +20,81 @@ class PDFApi {
     final file = File('${dir.path}/$filename');
     await file.writeAsBytes(bytes, flush: true);
     return file;
+  }
+  String snackBareMaseg='';
+  Future CheckUserConnectionButton(context,String buttonName) async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        if(buttonName=='Read'){
+          snackBareMaseg='لحظات : يتم إعداد الملف  الأن';
+        }else if(buttonName=='Download'){
+          snackBareMaseg='لحظات : يتم تحميل الملف الأن';
+        }
+        if (await DataConnectionChecker().hasConnection) {
+        return ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Center(
+                child: Text(
+                    snackBareMaseg,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+              ),
+              duration:Duration(milliseconds:1000) ,
+              behavior: SnackBarBehavior.floating,
+              backgroundColor: Theme.of(context).primaryColorLight,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0)
+              ),
+            )
+        );
+        }
+      }
+    } on SocketException catch (_) {
+       return    ScaffoldMessenger.of(context).showSnackBar(
+           SnackBar(
+             content: Center(
+               child: Text(
+                 'تأكد من الاتصال باللإنترنت',
+                 style: Theme.of(context).textTheme.bodyMedium,
+               ),
+             ),
+             behavior: SnackBarBehavior.floating,
+             duration:Duration(milliseconds:1000) ,
+             backgroundColor: Theme.of(context).hintColor,
+             shape: RoundedRectangleBorder(
+                 borderRadius: BorderRadius.circular(30.0)
+             ),
+
+           )
+       );
+    }
+  }
+  Future CheckUserConnectionPage(context) async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        return ;
+      }
+    } on SocketException catch (_) {
+      return    ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Center(
+              child: Text(
+                'تأكد من الاتصال باللإنترنت',
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+            ),
+            behavior: SnackBarBehavior.floating,
+            duration:Duration(milliseconds:1000) ,
+            backgroundColor: Theme.of(context).hintColor,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0)
+            ),
+
+          )
+      );
+    }
   }
 
 

@@ -121,6 +121,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  data_connection_checker_nulls:
+    dependency: "direct main"
+    description:
+      name: data_connection_checker_nulls
+      sha256: "86a67945b1c78f17d094ea175a4b0be4a20bcd89146ce5523974b614693091e2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.2"
   dialog_flowtter:
     dependency: "direct main"
     description:
@@ -464,6 +472,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.11.1"
+  percent_indicator:
+    dependency: "direct main"
+    description:
+      name: percent_indicator
+      sha256: c37099ad833a883c9d71782321cb65c3a848c21b6939b6185f0ff6640d05814c
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.2.3"
   petitparser:
     dependency: transitive
     description:

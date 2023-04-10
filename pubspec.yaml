@@ -47,6 +47,8 @@ dependencies:
   url_launcher: ^6.1.10
   open_file: ^3.2.1
   cached_network_image: ^3.2.3
+  data_connection_checker_nulls: ^0.0.2
+  percent_indicator: ^4.2.3
 
 
 

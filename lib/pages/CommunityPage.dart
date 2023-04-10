@@ -65,8 +65,9 @@ class _CommunityPageState extends State<CommunityPage> {
     children: List.generate(community.length,
     (index) =>
     GroupItem(name: community[index]['name'],
-    CommunityUrl: community[index]['CommunityUrl'],
-    CommunityimageUrl: community[index]['CommunityimageUrl'],
+      CommunityUrl: community[index]['CommunityUrl'],
+      CommunityimageUrl: community[index]['CommunityimageUrl'],
+      subtitel: community[index]['subtitel'],
     )
     )
     ),

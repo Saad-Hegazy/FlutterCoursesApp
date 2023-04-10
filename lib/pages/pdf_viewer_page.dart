@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:path/path.dart';
+import 'package:prmagito/theme/color.dart';
 class PDFViewerPage extends StatefulWidget {
   final File file;
   const PDFViewerPage({
@@ -20,10 +21,23 @@ class _PDFViewerPageState extends State<PDFViewerPage> {
     final text = '${indexPage + 1} of $pages';
     return Scaffold(
       appBar: AppBar(
-        title: Text(name),
+        leading: const BackButton(
+          color: Colors.black,
+        ),
+          iconTheme: IconThemeData(color: Colors.black),
+        elevation: 0.5,
+        backgroundColor: appBgColor,
+        title: Center(
+            child:  Text(name,
+              style: TextStyle(
+                  fontSize: 28,
+                  color: Colors.black87,
+                  fontWeight: FontWeight.w600)
+              ,)
+        ),
         actions: pages >= 2
             ? [
-          Center(child: Text(text)),
+          Center(child: Text(text ,style: TextStyle(color: Colors.black),)),
           IconButton(
             icon: Icon(Icons.chevron_left, size: 32),
             onPressed: () {

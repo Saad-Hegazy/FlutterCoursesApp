@@ -52,6 +52,7 @@ class _MyHomeState extends State<MyHome> {
                       )),
                   IconButton(
                       onPressed: () {
+
                         sendMessage(_controller.text);
                         _controller.clear();
                       },
