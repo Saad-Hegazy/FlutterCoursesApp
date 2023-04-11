@@ -72,9 +72,7 @@ class _GroupItemState extends State<GroupItem> {
                                                 ),
                                                 onTap: () async{
                                                 await PDFApi().CheckUserConnectionPage(context);
-                                                launchUrl(
-                                                    Uri.parse(widget.CommunityUrl)
-                                                );
+                                                launchURLBrowser(widget.CommunityUrl);
 
                                               }
                                             ),
@@ -98,10 +96,13 @@ class _GroupItemState extends State<GroupItem> {
           ],
         ),
       );
-
-
-
-
-
+  }
+ Future  launchURLBrowser(var Url) async {
+    var url = Uri.parse(Url);
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

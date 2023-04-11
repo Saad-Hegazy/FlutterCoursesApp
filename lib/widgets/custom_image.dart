@@ -47,6 +47,7 @@ class CustomImage extends StatelessWidget {
                     image: imageProvider, fit: fit),
               ),
             ),
+            fit: BoxFit.cover,
           )
               :
           Image(

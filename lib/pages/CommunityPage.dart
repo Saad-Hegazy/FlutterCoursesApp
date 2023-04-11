@@ -59,17 +59,30 @@ class _CommunityPageState extends State<CommunityPage> {
 
 
     ),
-    body: ListView(
-        padding: EdgeInsets.only(top: 10,left: 15, right: 15),
-    shrinkWrap: true,
-    children: List.generate(community.length,
-    (index) =>
-    GroupItem(name: community[index]['name'],
-      CommunityUrl: community[index]['CommunityUrl'],
-      CommunityimageUrl: community[index]['CommunityimageUrl'],
-      subtitel: community[index]['subtitel'],
-    )
-    )
+    body: Flex(
+      direction: Axis.vertical,
+      children: [
+         SizedBox(
+          height: 6,
+        ),
+        Expanded(
+          child: ListView(
+            padding: EdgeInsets.only(top: 10,left: 15, right: 15),
+
+            shrinkWrap: true,
+
+            children: List.generate(community.length,
+                    (index) =>
+                    GroupItem(name: community[index]['name'],
+                      CommunityUrl: community[index]['CommunityUrl'],
+                      CommunityimageUrl: community[index]['CommunityimageUrl'],
+                      subtitel: community[index]['subtitel'],
+                    )
+            )
+
+      ),
+        ),],
+
     ),
     );
   }
