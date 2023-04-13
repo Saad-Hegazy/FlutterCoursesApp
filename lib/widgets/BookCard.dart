@@ -20,7 +20,7 @@ class _BookCardState extends State<BookCard> {
   bool isDownloadStarted = false;
   bool isDownloadFinish = false;
   bool buttonCliked=false;
-  late final File tempFileDun;
+  late final File locationOfFileDownloaded;
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +75,7 @@ class _BookCardState extends State<BookCard> {
                         buttonCliked=true;
                       });
                     },
-                    child: Text("READ",
+                    child: Text("Read",
                       style:TextStyle(
                         color: buttonCliked ? Colors.green : Colors.black,
                       ),
@@ -103,7 +103,6 @@ class _BookCardState extends State<BookCard> {
                         await PDFApi().CheckUserConnectionButton(context,'Download');
                         downloadFile(url);
                       }else{
-
                         ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Center(
@@ -121,7 +120,7 @@ class _BookCardState extends State<BookCard> {
 
                             )
                         );
-                        await OpenFile.open(tempFileDun.path);
+                        await OpenFile.open(locationOfFileDownloaded.path);
                       }
 
                     },
@@ -176,13 +175,12 @@ class _BookCardState extends State<BookCard> {
       await OpenFile.open(tempFile.path);
       setState(() {
         isDownloadFinish = true;
-        tempFileDun=tempFile;
+        locationOfFileDownloaded=tempFile;
       });
-
     }on FirebaseException{
       ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Center(
-            child: Text('نأسف : حدث خطأما',
+            child: Text('نأسف :تعذر جلب الملف',
               style: Theme.of(context).textTheme.bodyMedium,
             ),
           )

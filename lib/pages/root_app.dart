@@ -24,14 +24,14 @@ class _RootAppState extends State<RootApp> with TickerProviderStateMixin {
       "page": CommunityPage(),
     },
     {
-      "icon": "assets/icons/play.svg",
-      "active_icon": "assets/icons/play.svg",
-      "page": MyHome(),
-    },
-    {
       "icon": "assets/icons/book.svg",
       "active_icon": "assets/icons/book.svg",
       "page": CategoriesPage(),
+    },
+    {
+      "icon": "assets/icons/play.svg",
+      "active_icon": "assets/icons/play.svg",
+      "page": MyHome(),
     },
   ];
 

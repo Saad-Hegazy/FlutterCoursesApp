@@ -26,12 +26,12 @@ class PDFApi {
     try {
       final result = await InternetAddress.lookup('google.com');
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-        if(buttonName=='Read'){
-          snackBareMaseg='لحظات : يتم إعداد الملف  الأن';
-        }else if(buttonName=='Download'){
-          snackBareMaseg='لحظات : يتم تحميل الملف الأن';
-        }
         if (await DataConnectionChecker().hasConnection) {
+          if(buttonName=='Read'){
+            snackBareMaseg='لحظات : يتم إعداد الملف  الأن';
+          }else if(buttonName=='Download'){
+            snackBareMaseg='لحظات : يتم تحميل الملف الأن';
+          }
         return ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Center(
@@ -40,7 +40,7 @@ class PDFApi {
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ),
-              duration:Duration(milliseconds:1000) ,
+              duration:Duration(seconds:1) ,
               behavior: SnackBarBehavior.floating,
               backgroundColor: Theme.of(context).primaryColorLight,
               shape: RoundedRectangleBorder(
