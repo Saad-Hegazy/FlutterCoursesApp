@@ -54,18 +54,15 @@ class _CategoriesPageState extends State<CategoriesPage> {
               color: Colors.black87,
               fontWeight: FontWeight.w600)
           ,)
-
-
       ),
-      body:
-      GridView(
+      
+      body: GridView(
           padding: const EdgeInsets.all(10),
           gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent:200,
-            childAspectRatio: 7/8,
+            childAspectRatio: 7/8 ,
             mainAxisSpacing: 10,
             crossAxisSpacing: 10,
-
           ),
           children:
           Categories_data.map(
