@@ -26,7 +26,7 @@ class _PDFViewerPageState extends State<PDFViewerPage> {
         ),
           iconTheme: IconThemeData(color: Colors.black),
         elevation: 0.5,
-        backgroundColor: appBgColor,
+        backgroundColor: mainColor,
         title: Center(
             child:  Text(name,
               style: TextStyle(

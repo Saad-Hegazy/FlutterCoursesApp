@@ -38,7 +38,7 @@ class _BooksFromCategoryPageState extends State<BooksFromCategoryPage> {
           ),
           centerTitle: true,
           elevation: 0.5,
-          backgroundColor: appBgColor,
+          backgroundColor: mainColor,
           title:
               Text(this.widget.name,
                 style: TextStyle(

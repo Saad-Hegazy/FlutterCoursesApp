@@ -22,10 +22,10 @@ class _MyHomeState extends State<MyHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: appBgColor,
+      backgroundColor: mainColor,
       appBar: AppBar(
         elevation: 0.5,
-        backgroundColor: appBgColor,
+        backgroundColor: mainColor,
         title: Center(
             child:  Text("CHAT BOT",
               style: TextStyle(
@@ -42,7 +42,7 @@ class _MyHomeState extends State<MyHome> {
             Expanded(child: MessagesScreen(messages: messages)),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-              color: glassLabelColor,
+              color: scaffoldBackgroundColor,
               child: Row(
                 children: [
                   Expanded(

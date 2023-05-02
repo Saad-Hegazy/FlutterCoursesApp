@@ -19,4 +19,5 @@ class Book   {
         required this.pagesCount,
       required this.width
       });
+
 }

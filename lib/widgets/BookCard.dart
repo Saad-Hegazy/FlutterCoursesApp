@@ -81,7 +81,7 @@ class _BookCardState extends State<BookCard> {
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: appBgColor,
+                      backgroundColor: mainColor,
                       shadowColor:shadowColor,
                       foregroundColor: Colors.black87,
                       elevation: 2,
@@ -131,7 +131,7 @@ class _BookCardState extends State<BookCard> {
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: appBgColor,
+                      backgroundColor: mainColor,
                       shadowColor:shadowColor,
                       foregroundColor: Colors.black87,
                       elevation: 3,

@@ -44,9 +44,9 @@ class _CommunityPageState extends State<CommunityPage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-        backgroundColor: appBgColor,
+        backgroundColor: mainColor,
         appBar: AppBar(
-          backgroundColor: appBgColor,
+          backgroundColor: mainColor,
           elevation: 0.5,
           centerTitle: true,
         title:
@@ -62,9 +62,7 @@ class _CommunityPageState extends State<CommunityPage> {
     body: Flex(
       direction: Axis.vertical,
       children: [
-         SizedBox(
-          height: 6,
-        ),
+         SizedBox(height: 6,),
         Expanded(
           child: ListView(
             padding: EdgeInsets.only(top: 10,left: 15, right: 15),

@@ -1,7 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:prmagito/models/category.dart';
-import 'package:prmagito/widgets/category_item.dart';
+import 'package:prmagito/pages/booksFromCategory.dart';
+import 'package:prmagito/theme/consttants.dart';
 import 'package:prmagito/theme/color.dart';
 
 class CategoriesPage extends StatefulWidget {
@@ -42,10 +45,13 @@ class _CategoriesPageState extends State<CategoriesPage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      backgroundColor: appBgColor,
+      backgroundColor: mainColor,
       appBar: AppBar(
+          leading: const BackButton(
+            color: Colors.black,
+          ),
         elevation: 0.5,
-        backgroundColor: appBgColor,
+        backgroundColor: mainColor,
           centerTitle: true,
         title:
             Text("Categories",
@@ -56,25 +62,41 @@ class _CategoriesPageState extends State<CategoriesPage> {
           ,)
       ),
       
-      body: GridView(
-          padding: const EdgeInsets.all(10),
-          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent:200,
-            childAspectRatio: 7/8 ,
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 10,
-          ),
-          children:
-          Categories_data.map(
-                  (categotyData)=>
-                  CategoryItem(
-                    imageUrl:categotyData.imageUrl , name: categotyData.name,
-                  )
-          ).toList()
+      body:Padding(
+        padding: EdgeInsets.all(10),
+        child: MasonryGridView.count(
+          crossAxisCount: 2,
+          crossAxisSpacing: 13,
+          mainAxisSpacing: 20,
+          itemCount: categories.length,
+          itemBuilder: (context, index) {
+            return GestureDetector(
+              onTap: ()
+              =>  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>BooksFromCategoryPage(categories[index]['name']))),
 
-
+              child: Container(
+                padding: EdgeInsets.all(20),
+                height: index.isEven ? 185 : 200,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  image: DecorationImage(
+                    image: CachedNetworkImageProvider(categories[index]['image']),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      categories[index]['name'],
+                      style: kTitleTextStyle2,),
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
       ),
-
     );
   }
 
