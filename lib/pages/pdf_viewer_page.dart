@@ -22,22 +22,22 @@ class _PDFViewerPageState extends State<PDFViewerPage> {
     return Scaffold(
       appBar: AppBar(
         leading: const BackButton(
-          color: Colors.black,
+          color: blackColor,
         ),
-          iconTheme: IconThemeData(color: Colors.black),
+          iconTheme: IconThemeData(color: blackColor),
         elevation: 0.5,
         backgroundColor: mainColor,
         title: Center(
             child:  Text(name,
               style: TextStyle(
                   fontSize: 28,
-                  color: Colors.black87,
+                  color: blackColor,
                   fontWeight: FontWeight.w600)
               ,)
         ),
         actions: pages >= 2
             ? [
-          Center(child: Text(text ,style: TextStyle(color: Colors.black),)),
+          Center(child: Text(text ,style: TextStyle(color: blackColor),)),
           IconButton(
             icon: Icon(Icons.chevron_left, size: 32),
             onPressed: () {
@@ -58,7 +58,7 @@ class _PDFViewerPageState extends State<PDFViewerPage> {
       body: PDFView(
         filePath: widget.file.path,
         // autoSpacing: false,
-        // swipeHorizontal: true,
+        //swipeHorizontal: true,
         // pageSnap: false,
         // pageFling: false,
         onRender: (pages) => setState(() => this.pages = pages!),

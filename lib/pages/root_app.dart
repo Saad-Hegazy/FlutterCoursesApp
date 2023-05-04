@@ -1,13 +1,10 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:prmagito/pages/CommunityPage.dart';
-import 'package:prmagito/pages/Search.dart';
 import 'package:prmagito/widgets/bottombar_item.dart';
 import 'package:prmagito/theme/color.dart';
 import 'package:prmagito/utils/constant.dart';
 import 'package:flutter/services.dart';
 import 'package:prmagito/widgets/searchWidget.dart';
-import 'categoryPage.dart';
 import 'chatBot.dart';
 class RootApp extends StatefulWidget {
   const RootApp({Key? key}) : super(key: key);
@@ -84,6 +81,7 @@ class _RootAppState extends State<RootApp> with TickerProviderStateMixin {
   Widget getBarPage() {
 
     return IndexedStack(
+
         index: activeTab,
         children: List.generate(
 
@@ -103,7 +101,7 @@ class _RootAppState extends State<RootApp> with TickerProviderStateMixin {
     height: 60,
     width: double.infinity,
     decoration: BoxDecoration(
-        color: scaffoldBackgroundColor,
+        color: appBarbackgroundColor,
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(25), topRight: Radius.circular(25)),
         boxShadow: [

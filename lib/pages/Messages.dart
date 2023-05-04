@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:prmagito/models/Api.dart';
 import 'package:prmagito/theme/color.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 class MessagesScreen extends StatefulWidget {
   final List messages;
   const MessagesScreen({Key? key, required this.messages}) : super(key: key);
@@ -39,7 +40,12 @@ class _MessagesScreenState extends State<MessagesScreen> {
                             : yellow.withOpacity(0.8)),
                     constraints: BoxConstraints(maxWidth: w * 2 / 3),
                     child:
-                    Text(widget.messages[index]['message'].text.text[0])),
+                    InkWell(
+                        onTap: () async{
+                          await PDFApi().CheckUserConnectionPage(context);
+                          launchURLBrowser(widget.messages[index]['message'].text.text[0]);
+                        },
+                        child: Text(widget.messages[index]['message'].text.text[0]))),
               ],
             ),
           );
@@ -47,4 +53,13 @@ class _MessagesScreenState extends State<MessagesScreen> {
         separatorBuilder: (_, i) => Padding(padding: EdgeInsets.only(top: 10)),
         itemCount: widget.messages.length);
   }
+  Future  launchURLBrowser(var Url) async {
+    var url = Uri.parse(Url);
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
 }

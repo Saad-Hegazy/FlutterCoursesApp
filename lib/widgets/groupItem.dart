@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:prmagito/models/Api.dart';
+import 'package:prmagito/theme/color.dart';
 import 'package:prmagito/widgets/custom_image.dart';
 import 'package:url_launcher/url_launcher.dart';
 class GroupItem extends StatefulWidget {
@@ -29,7 +30,7 @@ class _GroupItemState extends State<GroupItem> {
         margin: EdgeInsets.only(bottom: 8),
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: communityCardBackGroundColor ,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
@@ -68,7 +69,7 @@ class _GroupItemState extends State<GroupItem> {
                                                     widget.name,
                                                     maxLines: 1,
                                                     overflow: TextOverflow.ellipsis,
-                                                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)
+                                                    style: TextStyle(color: blackColor, fontSize: 16, fontWeight: FontWeight.w700)
                                                 ),
                                                 onTap: () async{
                                                 await PDFApi().CheckUserConnectionPage(context);
@@ -76,7 +77,7 @@ class _GroupItemState extends State<GroupItem> {
 
                                               }
                                             ),
-                                          Text(widget.subtitel, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(fontSize: 11, color: Colors.grey))
+                                          Text(widget.subtitel, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(fontSize: 11, color: greyColor ))
                                         ]
 
                                     )

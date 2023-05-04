@@ -86,7 +86,7 @@ class PDFApi {
               ),
             ),
             behavior: SnackBarBehavior.floating,
-            duration:Duration(milliseconds:1000) ,
+            duration:Duration(seconds:1) ,
             backgroundColor: Theme.of(context).hintColor,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30.0)

@@ -46,14 +46,14 @@ class _CommunityPageState extends State<CommunityPage> {
     return Scaffold(
         backgroundColor: mainColor,
         appBar: AppBar(
-          backgroundColor: mainColor,
+          backgroundColor: appBarbackgroundColor,
           elevation: 0.5,
           centerTitle: true,
         title:
          Text("Groups",
         style: TextStyle(
         fontSize: 28,
-        color: Colors.black87,
+        color: blackColor,
         fontWeight: FontWeight.w600)
     ,)
 

@@ -45,13 +45,15 @@ class _BookCardState extends State<BookCard> {
               child: Text(
                 this.widget.name,
                 style: TextStyle(fontSize: 22,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600
+                    color: textColor,
+                    fontWeight: FontWeight.w600,
+
+
                 ),
               ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                color: Colors.black.withOpacity(0.1),
+                color:whiteColor.withOpacity(0.1),
               )
 
           ),
@@ -77,13 +79,13 @@ class _BookCardState extends State<BookCard> {
                     },
                     child: Text("Read",
                       style:TextStyle(
-                        color: buttonCliked ? Colors.green : Colors.black,
+                        color: buttonCliked ? Color(0xFFFFB100) : blackColor,
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: mainColor,
                       shadowColor:shadowColor,
-                      foregroundColor: Colors.black87,
+                      foregroundColor: blackColor,
                       elevation: 2,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
@@ -112,7 +114,7 @@ class _BookCardState extends State<BookCard> {
                                 ),
                               ),
                               behavior: SnackBarBehavior.floating,
-                              duration:Duration(milliseconds:1000) ,
+                              duration:Duration(seconds:1) ,
                               backgroundColor: Theme.of(context).primaryColorLight,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30.0)
@@ -127,13 +129,13 @@ class _BookCardState extends State<BookCard> {
 
                     child: Text("Download",
                       style:TextStyle(
-                        color: isDownloadFinish ? Colors.green : Colors.black,
+                        color: isDownloadFinish ? Color(0xFFFFB100) : blackColor,
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: mainColor,
                       shadowColor:shadowColor,
-                      foregroundColor: Colors.black87,
+                      foregroundColor: blackColor,
                       elevation: 3,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),

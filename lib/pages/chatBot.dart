@@ -25,12 +25,12 @@ class _MyHomeState extends State<MyHome> {
       backgroundColor: mainColor,
       appBar: AppBar(
         elevation: 0.5,
-        backgroundColor: mainColor,
+        backgroundColor: appBarbackgroundColor,
         title: Center(
             child:  Text("CHAT BOT",
               style: TextStyle(
                   fontSize: 28,
-                  color: Colors.black87,
+                  color:blackColor ,
                   fontWeight: FontWeight.w600)
               ,)
         ),
@@ -42,13 +42,15 @@ class _MyHomeState extends State<MyHome> {
             Expanded(child: MessagesScreen(messages: messages)),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-              color: scaffoldBackgroundColor,
+              color: textFiledBackGroundColor,
               child: Row(
+
                 children: [
                   Expanded(
+
                       child: TextField(
                         controller: _controller,
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(color: blackColor ),
                       )),
                   IconButton(
                       onPressed: () {
@@ -56,7 +58,7 @@ class _MyHomeState extends State<MyHome> {
                         sendMessage(_controller.text);
                         _controller.clear();
                       },
-                      icon: Icon(Icons.send)
+                      icon: Icon(Icons.send,color: blackColor,)
                   )
                 ],
               ),

@@ -9,9 +9,9 @@ import 'package:image_picker/image_picker.dart';
 import 'package:prmagito/pages/Search.dart';
 import 'package:prmagito/pages/booksFromCategory.dart';
 import 'package:prmagito/pages/categoryPage.dart';
-import 'package:prmagito/theme/consttants.dart';
+import 'package:prmagito/theme/color.dart';
+import 'package:prmagito/utils/provider.dart';
 import 'dart:io';
-
 import 'package:shared_preferences/shared_preferences.dart';
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -20,9 +20,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  bool? themeVal;
    String? imagePath;
   File? image;
   List  categories=[];
+
   CollectionReference category = FirebaseFirestore.instance.collection('category');
   getCategoryData()async{
     var responsbody = await category.get();
@@ -38,7 +40,7 @@ class _HomeState extends State<Home> {
     super.initState();
     getCategoryData();
     getImagePath();
-
+    getThemeVal();
   }
   List imageList = [
     {"id": 1, "image_path": 'assets/images/wep.jpg'},
@@ -52,28 +54,43 @@ class _HomeState extends State<Home> {
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
+  var  provaider= VriableProvaoder.of(context);
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.only(left: 20, top: 50, right: 20),
+        padding: EdgeInsets.only(left: 16, top: 50, right: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                SvgPicture.asset("assets/icons/menu.svg"),
-                InkWell(
-                  onTap: (){
-                    showModalBottomSheet(
-                        context: context,
-                        builder: ((builder)=> bottomsheet())
-                    );
-                  },
-                  child: CircleAvatar(
-                    backgroundImage: imagePath!=null ? FileImage(File(imagePath!)): AssetImage('assets/images/person-icon.png' ) as ImageProvider,
-                  ),
-                )
-              ],
+            Container(
+              color:appBarbackgroundColor,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(10,0,5,0),
+                child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    InkWell(
+                      onTap:(){
+                        setState(() {
+                          provaider?.darkmode=!provaider.darkmode;
+                        });
+                        saveThemeVal(provaider!.darkmode);
+                      },
+                      child: themeVal! ? SvgPicture.asset("assets/icons/sun.svg"):SvgPicture.asset("assets/icons/moon.svg"),
+                    ),
+                    InkWell(
+                      onTap: (){
+                        showModalBottomSheet(
+                            context: context,
+                            builder: ((builder)=> bottomsheet())
+                        );
+                      },
+                      child: CircleAvatar(
+                        backgroundImage: imagePath!=null ? FileImage(File(imagePath!)): AssetImage('assets/images/person-icon.png' ) as ImageProvider,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
             Container(
               margin: EdgeInsets.symmetric(vertical: 10),
@@ -81,7 +98,7 @@ class _HomeState extends State<Home> {
                 height: 60,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                color: Color(0xFFF5F5F7),
+                color: appBarbackgroundColor,
                 borderRadius: BorderRadius.circular(40),
                 ),
               child: InkWell(
@@ -90,7 +107,7 @@ class _HomeState extends State<Home> {
                       children: <Widget>[
                       SvgPicture.asset("assets/icons/search.svg"),
                       SizedBox(width: 16),
-                      Text(
+                      const Text(
                       "Search... ",
                       style: TextStyle(
                       fontSize: 18,
@@ -175,13 +192,14 @@ class _HomeState extends State<Home> {
                 crossAxisCount: 2,
                 crossAxisSpacing: 20,
                 mainAxisSpacing: 20,
-                itemCount: 4,
+                itemCount: categories.length,
                 itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: ()
                   =>  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>BooksFromCategoryPage(categories[index]['name']))),
 
                   child: Container(
+
                     padding: EdgeInsets.all(20),
                     height: index.isEven ? 190 : 175,
                     decoration: BoxDecoration(
@@ -196,7 +214,8 @@ class _HomeState extends State<Home> {
                     children: <Widget>[
                       Text(
                     categories[index]['name'],
-                    style: kTitleTextStyle2,),
+                    style: kTitleTextStyle2,
+                      ),
                     ],
                     ),
                   ),
@@ -277,4 +296,16 @@ class _HomeState extends State<Home> {
       imagePath= sharedPref.getString('path');
     });
   }
+   void saveThemeVal(bool val)async{
+     final sharedPref= await SharedPreferences.getInstance();
+     sharedPref.setBool('ThemeValue', val);
+     getThemeVal();
+   }
+   void getThemeVal()async{
+     final sharedPref= await SharedPreferences.getInstance();
+     setState(() {
+        this.themeVal =sharedPref.getBool('ThemeValue');
+     });
+   }
+
 }

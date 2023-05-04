@@ -34,16 +34,16 @@ class _BooksFromCategoryPageState extends State<BooksFromCategoryPage> {
     return Scaffold(
         appBar: AppBar(
           leading: const BackButton(
-            color: Colors.black,
+            color:  blackColor,
           ),
           centerTitle: true,
           elevation: 0.5,
-          backgroundColor: mainColor,
+          backgroundColor: appBarbackgroundColor,
           title:
               Text(this.widget.name,
                 style: TextStyle(
                     fontSize: 28,
-                    color: Colors.black87,
+                    color:blackColor,
                     fontWeight: FontWeight.w600)
                 ,)
 

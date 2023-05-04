@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:prmagito/models/category.dart';
 import 'package:prmagito/pages/booksFromCategory.dart';
-import 'package:prmagito/theme/consttants.dart';
 import 'package:prmagito/theme/color.dart';
 
 class CategoriesPage extends StatefulWidget {
@@ -48,16 +47,16 @@ class _CategoriesPageState extends State<CategoriesPage> {
       backgroundColor: mainColor,
       appBar: AppBar(
           leading: const BackButton(
-            color: Colors.black,
+            color: blackColor,
           ),
         elevation: 0.5,
-        backgroundColor: mainColor,
+        backgroundColor: appBarbackgroundColor,
           centerTitle: true,
         title:
             Text("Categories",
           style: TextStyle(
               fontSize: 28,
-              color: Colors.black87,
+              color: blackColor,
               fontWeight: FontWeight.w600)
           ,)
       ),

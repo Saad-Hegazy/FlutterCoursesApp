@@ -12,12 +12,13 @@ class _SearchWidgetState extends State<SearchWidget> {
     return Scaffold(
       appBar: AppBar(
         leading: const BackButton(
-          color: Colors.black,
+          color: blackColor,
         ),
         elevation: 0.5,
-        backgroundColor: mainColor,
+        backgroundColor: appBarbackgroundColor,
         title:
            TextField(
+             style: TextStyle(color: blackColor ),
             decoration: InputDecoration(
               prefixIcon:Icon(Icons.search_sharp),
               hintText: "Search... ",
@@ -45,7 +46,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                     child: ListTile(
                       title: Text(data['name'],maxLines: 1,overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                            color: Colors.black,
+                            color: blackColor,
                             fontSize: 16,
                             fontWeight: FontWeight.bold),
                       ),
@@ -66,7 +67,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                   return ListTile(
                     title: Text(data['name'],maxLines: 1,overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                          color: Colors.black,
+                          color: blackColor,
                           fontSize: 16,
                           fontWeight: FontWeight.bold),
                     ),
