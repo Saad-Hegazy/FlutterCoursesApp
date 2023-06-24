@@ -36,8 +36,8 @@ class _MessagesScreenState extends State<MessagesScreen> {
                               widget.messages[index]['isUserMessage'] ? 20 : 0),
                         ),
                         color: widget.messages[index]['isUserMessage']
-                            ? yellow
-                            : yellow.withOpacity(0.8)),
+                            ? appBarbackgroundColor.withOpacity(0.8)
+                            : appBarbackgroundColor),
                     constraints: BoxConstraints(maxWidth: w * 2 / 3),
                     child:
                     InkWell(
@@ -45,7 +45,10 @@ class _MessagesScreenState extends State<MessagesScreen> {
                           await PDFApi().CheckUserConnectionPage(context);
                           launchURLBrowser(widget.messages[index]['message'].text.text[0]);
                         },
-                        child: Text(widget.messages[index]['message'].text.text[0]))),
+                        child: Text(widget.messages[index]['message'].text.text[0],
+                          style: TextStyle(
+                              fontSize: 16, color: blackColor, fontWeight: FontWeight.w400),
+                        ))),
               ],
             ),
           );

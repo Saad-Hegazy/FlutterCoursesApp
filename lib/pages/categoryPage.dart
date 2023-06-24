@@ -46,7 +46,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
     return Scaffold(
       backgroundColor: mainColor,
       appBar: AppBar(
-          leading: const BackButton(
+          leading:  BackButton(
             color: blackColor,
           ),
         elevation: 0.5,

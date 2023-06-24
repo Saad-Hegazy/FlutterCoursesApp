@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:prmagito/theme/color.dart';
 
 class BottomBarItem extends StatelessWidget {
-  const BottomBarItem(this.icon, {this.onTap, this.color = Colors.grey, this.activeColor = primary, this.isActive = false, this.isNotified = false});
+   BottomBarItem(this.icon, {this.onTap, this.color = Colors.grey , this.isActive = false, this.isNotified = false, required this.activeColor});
   final String icon;
   final Color color;
   final Color activeColor;

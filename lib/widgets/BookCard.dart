@@ -43,7 +43,7 @@ class _BookCardState extends State<BookCard> {
               padding: EdgeInsets.all(5),
               alignment: Alignment.centerLeft,
               child: Text(
-                this.widget.name,
+               "",// this.widget.name
                 style: TextStyle(fontSize: 22,
                     color: textColor,
                     fontWeight: FontWeight.w600,
@@ -79,6 +79,7 @@ class _BookCardState extends State<BookCard> {
                     },
                     child: Text("Read",
                       style:TextStyle(
+                          fontSize:12,
                         color: buttonCliked ? Color(0xFFFFB100) : blackColor,
                       ),
                     ),
@@ -129,6 +130,7 @@ class _BookCardState extends State<BookCard> {
 
                     child: Text("Download",
                       style:TextStyle(
+                        fontSize:12,
                         color: isDownloadFinish ? Color(0xFFFFB100) : blackColor,
                       ),
                     ),

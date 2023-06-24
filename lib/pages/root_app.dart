@@ -4,7 +4,7 @@ import 'package:prmagito/widgets/bottombar_item.dart';
 import 'package:prmagito/theme/color.dart';
 import 'package:prmagito/utils/constant.dart';
 import 'package:flutter/services.dart';
-import 'package:prmagito/widgets/searchWidget.dart';
+import 'package:prmagito/pages/HomePage.dart';
 import 'chatBot.dart';
 class RootApp extends StatefulWidget {
   const RootApp({Key? key}) : super(key: key);
@@ -29,7 +29,7 @@ class _RootAppState extends State<RootApp> with TickerProviderStateMixin {
     {
       "icon": "assets/icons/play.svg",
       "active_icon": "assets/icons/play.svg",
-      "page": MyHome(),
+      "page": CharBotPage(),
     },
   ];
 

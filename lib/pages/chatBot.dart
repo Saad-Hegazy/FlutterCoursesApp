@@ -1,40 +1,38 @@
 import 'package:dialog_flowtter/dialog_flowtter.dart';
-import'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:prmagito/pages/Messages.dart';
 import 'package:prmagito/theme/color.dart';
 
-class MyHome extends StatefulWidget {
-  const MyHome({Key? key}) : super(key: key);
+class CharBotPage extends StatefulWidget {
+  const CharBotPage({Key? key}) : super(key: key);
 
   @override
-  State<MyHome> createState() => _MyHomeState();
+  State<CharBotPage> createState() => _CharBotPageState();
 }
 
-class _MyHomeState extends State<MyHome> {
-  late DialogFlowtter dialogFlowtter ;
-  final TextEditingController _controller =TextEditingController();
+class _CharBotPageState extends State<CharBotPage> {
+  late DialogFlowtter dialogFlowtter;
+  final TextEditingController _controller = TextEditingController();
   List<Map<String, dynamic>> messages = [];
   @override
   void initState() {
     DialogFlowtter.fromFile().then((instance) => dialogFlowtter = instance);
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: mainColor,
+      backgroundColor: whiteColor,
       appBar: AppBar(
         elevation: 0.5,
         backgroundColor: appBarbackgroundColor,
         title: Center(
-            child:  Text("CHAT BOT",
-              style: TextStyle(
-                  fontSize: 28,
-                  color:blackColor ,
-                  fontWeight: FontWeight.w600)
-              ,)
-        ),
-
+            child: Text(
+          "CHAT BOT",
+          style: TextStyle(
+              fontSize: 28, color: blackColor, fontWeight: FontWeight.w600),
+        )),
       ),
       body: Container(
         child: Column(
@@ -44,22 +42,30 @@ class _MyHomeState extends State<MyHome> {
               padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
               color: textFiledBackGroundColor,
               child: Row(
-
                 children: [
                   Expanded(
-
                       child: TextField(
-                        controller: _controller,
-                        style: TextStyle(color: blackColor ),
-                      )),
+                        textAlign: TextAlign.end ,
+                    decoration: InputDecoration(
+                      hintText: "   write Start...  ",
+
+                      hintStyle:TextStyle(
+                            fontSize: 18, color: blackColor, fontWeight: FontWeight.w500),
+
+                    ),
+                    controller: _controller,
+                            style:TextStyle(fontSize: 18, color: blackColor,fontWeight: FontWeight.w500) ,
+                  ),
+                  ),
                   IconButton(
                       onPressed: () {
-
                         sendMessage(_controller.text);
                         _controller.clear();
                       },
-                      icon: Icon(Icons.send,color: blackColor,)
-                  )
+                      icon: Icon(
+                        Icons.send,
+                        color: blackColor,
+                      ))
                 ],
               ),
             )
@@ -90,4 +96,3 @@ class _MyHomeState extends State<MyHome> {
     messages.add({'message': message, 'isUserMessage': isUserMessage});
   }
 }
-

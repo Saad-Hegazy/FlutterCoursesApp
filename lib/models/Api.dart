@@ -57,11 +57,13 @@ class PDFApi {
                child: Text(
                  'تأكد من الاتصال باللإنترنت',
                  style: Theme.of(context).textTheme.bodyMedium,
+
+
                ),
              ),
              behavior: SnackBarBehavior.floating,
              duration:Duration(milliseconds:1000) ,
-             backgroundColor: Theme.of(context).hintColor,
+             backgroundColor: Theme.of(context).primaryColorDark,
              shape: RoundedRectangleBorder(
                  borderRadius: BorderRadius.circular(30.0)
              ),
@@ -87,7 +89,7 @@ class PDFApi {
             ),
             behavior: SnackBarBehavior.floating,
             duration:Duration(seconds:1) ,
-            backgroundColor: Theme.of(context).hintColor,
+            backgroundColor: Theme.of(context).primaryColorDark,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30.0)
             ),

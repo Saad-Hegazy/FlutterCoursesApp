@@ -21,7 +21,7 @@ class _PDFViewerPageState extends State<PDFViewerPage> {
     final text = '${indexPage + 1} of $pages';
     return Scaffold(
       appBar: AppBar(
-        leading: const BackButton(
+        leading:  BackButton(
           color: blackColor,
         ),
           iconTheme: IconThemeData(color: blackColor),
